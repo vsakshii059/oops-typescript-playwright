@@ -12,6 +12,7 @@ This project is designed to help you learn Object-Oriented Programming (OOP) con
 - Polymorphism
 - Page Object Model (POM)
 - Reusable automation code
+- Component-based design
 
 ## Project goals
 
@@ -20,18 +21,26 @@ This repo teaches OOP in a very simple way:
 1. Create a page class for each UI page.
 2. Reuse common actions in a base class.
 3. Keep selectors and logic inside classes.
-4. Make tests easier to read and maintain.
+4. Build reusable UI components like Header and ProductCard.
+5. Centralize test data with DataProvider.
+6. Make tests easier to read and maintain.
 
 ## Tech stack
 
 - TypeScript
 - Playwright
 - Page Object Model design
+- Component-based framework structure
 
 ## Folder structure
 
 ```text
 src/
+  components/
+    Header.ts
+    ProductCard.ts
+  data/
+    TestDataProvider.ts
   pages/
     BasePage.ts
     LoginPage.ts
@@ -41,6 +50,7 @@ src/
   tests/
     login.spec.ts
     purchase.spec.ts
+    framework.spec.ts
 ```
 
 ## Install dependencies
@@ -49,7 +59,7 @@ src/
 npm install
 ```
 
-## Run tests
+## Run all tests
 
 ```bash
 npm test
@@ -58,13 +68,7 @@ npm test
 ## Run a single test file
 
 ```bash
-npx playwright test src/tests/purchase.spec.ts
-```
-
-## Run tests in headed mode
-
-```bash
-npm run test:headed
+npx playwright test src/tests/framework.spec.ts
 ```
 
 ## Recommended learning flow
@@ -72,45 +76,34 @@ npm run test:headed
 1. Read `src/pages/BasePage.ts`
 2. Read `src/pages/LoginPage.ts`
 3. Read `src/pages/HomePage.ts`
-4. Read `src/pages/CartPage.ts`
-5. Read `src/pages/CheckoutPage.ts`
-6. Run `src/tests/purchase.spec.ts`
-7. Change the code and try your own examples
+4. Read `src/components/Header.ts`
+5. Read `src/components/ProductCard.ts`
+6. Read `src/data/TestDataProvider.ts`
+7. Run `src/tests/framework.spec.ts`
 
-## Lesson 2: Cart and checkout flow
+## Core framework ideas
 
-The project now includes a real purchase flow:
+- `BasePage` contains shared logic for all pages
+- `Header` is reusable on all pages
+- `ProductCard` represents a product in the home page
+- `TestDataProvider` stores reusable test data
+- Each page class has its own responsibility
 
-- login
-- add product to cart
-- open cart
-- click checkout
-- fill personal details
-- complete order
+## Example of real framework design
 
-This is a better example of OOP because each page has its own responsibility.
+This is how automation frameworks are built in many teams:
 
-## Example learning idea
-
-Try creating these extra classes:
-
-- `Navbar`
-- `ProductCard`
-- `CheckoutOverviewPage`
-- `AccountPage`
-
-Then reuse them in tests.
-
-## Helpful note
-
-This project uses SauceDemo for demo automation. It is a good simple website for learning automation patterns without complicated setup.
+- page objects for pages
+- components for reusable UI areas
+- data providers for test inputs
+- test files for scenarios
 
 ## Next steps
 
 Once you are comfortable, try:
 
-- CSS selectors
-- XPath
-- Test data management
 - Custom utility classes
+- API testing helpers
 - Reporting and screenshots
+- Page factory patterns
+- Domain-specific page models

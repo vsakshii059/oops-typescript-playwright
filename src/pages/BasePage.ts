@@ -15,4 +15,6 @@ export abstract class BasePage {
   async getPageTitle(): Promise<string> {
     return await this.page.title();
   }
+
+  abstract validatePage(): Promise<void>;
 }

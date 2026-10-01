@@ -1,5 +1,6 @@
 import { Page } from '@playwright/test';
 import { BasePage } from './BasePage';
+import { Header } from '../components/Header';
 
 export class CheckoutPage extends BasePage {
   private readonly firstNameInput = '[data-test="firstName"]';
@@ -8,9 +9,15 @@ export class CheckoutPage extends BasePage {
   private readonly continueButton = '[data-test="continue"]';
   private readonly finishButton = '[data-test="finish"]';
   private readonly successMessage = '.complete-header';
+  readonly header: Header;
 
   constructor(page: Page) {
     super(page);
+    this.header = new Header(page);
+  }
+
+  async validatePage(): Promise<void> {
+    await this.page.locator(this.firstNameInput).waitFor({ state: 'visible' });
   }
 
   async fillPersonalInfo(firstName: string, lastName: string, postalCode: string): Promise<void> {
