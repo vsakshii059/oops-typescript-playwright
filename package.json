@@ -1,0 +1,26 @@
+{
+  "name": "oops-typescript-playwright",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Spoon-fed OOP learning project using TypeScript and Playwright.",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:ui": "playwright test --ui",
+    "codegen": "playwright codegen",
+    "build": "tsc --noEmit"
+  },
+  "keywords": [
+    "playwright",
+    "typescript",
+    "oop",
+    "automation",
+    "learning"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "@playwright/test": "^1.51.0",
+    "@types/node": "^22.10.2",
+    "typescript": "^5.7.2"
+  }
+}
