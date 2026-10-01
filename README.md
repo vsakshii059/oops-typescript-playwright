@@ -36,8 +36,11 @@ src/
     BasePage.ts
     LoginPage.ts
     HomePage.ts
+    CartPage.ts
+    CheckoutPage.ts
   tests/
     login.spec.ts
+    purchase.spec.ts
 ```
 
 ## Install dependencies
@@ -52,6 +55,12 @@ npm install
 npm test
 ```
 
+## Run a single test file
+
+```bash
+npx playwright test src/tests/purchase.spec.ts
+```
+
 ## Run tests in headed mode
 
 ```bash
@@ -63,17 +72,32 @@ npm run test:headed
 1. Read `src/pages/BasePage.ts`
 2. Read `src/pages/LoginPage.ts`
 3. Read `src/pages/HomePage.ts`
-4. Run `src/tests/login.spec.ts`
-5. Change the code and try your own examples
+4. Read `src/pages/CartPage.ts`
+5. Read `src/pages/CheckoutPage.ts`
+6. Run `src/tests/purchase.spec.ts`
+7. Change the code and try your own examples
+
+## Lesson 2: Cart and checkout flow
+
+The project now includes a real purchase flow:
+
+- login
+- add product to cart
+- open cart
+- click checkout
+- fill personal details
+- complete order
+
+This is a better example of OOP because each page has its own responsibility.
 
 ## Example learning idea
 
 Try creating these extra classes:
 
-- `CartPage`
-- `CheckoutPage`
 - `Navbar`
 - `ProductCard`
+- `CheckoutOverviewPage`
+- `AccountPage`
 
 Then reuse them in tests.
 
